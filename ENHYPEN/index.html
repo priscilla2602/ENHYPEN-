@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ENHYPEN - Official Universe & Vinyl Hub</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==================== STYLES & CORE SYSTEM ==================== */
+    :root {
+      --bg-dark: #070709;
+      --bg-card: rgba(18, 18, 24, 0.75);
+      --accent-crimson: #E60039;
+      --accent-glow: rgba(230, 0, 57, 0.35);
+      --accent-gold: #D4AF37;
+      --text-main: #FFFFFF;
+      --text-muted: #A0A0B0;
+      --border-glass: rgba(255, 255, 255, 0.08);
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, .brand-logo {
+      font-family: 'Cinzel', serif;
+      letter-spacing: 2px;
+    }
+
+    /* Ambient background glow */
+    .ambient-glow {
+      position: fixed;
+      top: -20vh;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80vw;
+      height: 60vh;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* ==================== HEADER & NAV ==================== */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(7, 7, 9, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-glass);
+      z-index: 1000;
+    }
+
+    nav {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+    }
+
+    .brand-logo {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--text-main);
+      text-decoration: none;
+      background: linear-gradient(45deg, #fff, var(--accent-crimson));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--accent-crimson);
+      text-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    /* ==================== HERO SECTION ==================== */
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      border: 1px solid var(--accent-crimson);
+      color: var(--accent-crimson);
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      margin-bottom: 1rem;
+      background: linear-gradient(180deg, #FFFFFF 40%, var(--accent-crimson) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      max-width: 650px;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-primary {
+      background: var(--accent-crimson);
+      color: white;
+      padding: 0.9rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 1px;
+      box-shadow: 0 0 25px var(--accent-glow);
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 35px var(--accent-crimson);
+    }
+
+    /* ==================== MAIN SECTIONS ==================== */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 50%;
+      height: 3px;
+      background: var(--accent-crimson);
+    }
+
+    /* ==================== SOBRE / LORE ==================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .about-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 16px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .about-card h3 {
+      color: var(--accent-gold);
+      margin-bottom: 1rem;
+    }
+
+    /* ==================== INTEGRANTES ==================== */
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .member-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .member-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent-crimson);
+      box-shadow: 0 10px 30px var(--accent-glow);
+    }
+
+    .member-img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    .member-info {
+      padding: 1.5rem;
+    }
+
+    .member-info h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .member-info span {
+      color: var(--accent-crimson);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    /* ==================== DISCOGRAFIA (GRID DE ÁLBUNS) ==================== */
+    .album-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+
+    .album-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 16px;
+      padding: 1.2rem;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .album-card:hover {
+      transform: scale(1.03);
+      border-color: var(--accent-crimson);
+      box-shadow: 0 10px 25px var(--accent-glow);
+    }
+
+    .album-cover {
+      width: 100%;
+      aspect-ratio: 1/1;
+      border-radius: 10px;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    .album-meta {
+      font-size: 0.75rem;
+      color: var(--accent-crimson);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .album-title {
+      font-size: 1.1rem;
+      margin-top: 0.2rem;
+    }
+
+    /* ==================== MODAL DE VINIL PLAYER ==================== */
+    .player-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(15px);
+      z-index: 2000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .player-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .player-container {
+      width: 90%;
+      max-width: 950px;
+      background: #111116;
+      border: 1px solid var(--border-glass);
+      border-radius: 24px;
+      padding: 3rem;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 2rem;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .close-modal:hover { color: var(--accent-crimson); }
+
+    /* VINIL ANIMATION */
+    .vinyl-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .vinyl-record {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #222 0%, #050505 100%);
+      border: 6px solid #181818;
+      box-shadow: 0 0 30px rgba(0,0,0,0.8);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.5s ease;
+    }
+
+    .vinyl-record::before {
+      content: "";
+      position: absolute;
+      width: 92%;
+      height: 92%;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .vinyl-label {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      z-index: 2;
+    }
+
+    .vinyl-hole {
+      width: 14px;
+      height: 14px;
+      background: var(--bg-dark);
+      border-radius: 50%;
+      position: absolute;
+      z-index: 3;
+    }
+
+    .spinning {
+      animation: spinVinyl 3.5s linear infinite;
+    }
+
+    @keyframes spinVinyl {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .tonearm {
+      position: absolute;
+      top: -10px;
+      right: 30px;
+      width: 80px;
+      height: 160px;
+      border-right: 4px solid #888;
+      border-bottom: 4px solid #888;
+      border-border-bottom-right-radius: 20px;
+      transform-origin: top right;
+      transform: rotate(-28deg);
+      transition: transform 0.6s ease;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .tonearm.playing {
+      transform: rotate(3deg);
+    }
+
+    /* TRACKLIST & PLAYER CONTROLS */
+    .player-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .tracklist {
+      list-style: none;
+      max-height: 220px;
+      overflow-y: auto;
+      margin: 1.5rem 0;
+      padding-right: 0.5rem;
+    }
+
+    .track-item {
+      padding: 0.8rem 1rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .track-item:hover, .track-item.active {
+      background: var(--accent-crimson);
+      color: white;
+    }
+
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .play-btn {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: white;
+      color: black;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .play-btn:hover {
+      transform: scale(1.08);
+      background: var(--accent-crimson);
+      color: white;
+    }
+
+    .progress-bar-container {
+      flex-grow: 1;
+      height: 4px;
+      background: var(--border-glass);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background: var(--accent-crimson);
+      transition: width 0.2s linear;
+    }
+
+    /* ==================== FOOTER ==================== */
+    footer {
+      border-top: 1px solid var(--border-glass);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 6rem;
+    }
+
+    /* RESPONSIVIDADE */
+    @media (max-width: 900px) {
+      .player-container {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+      }
+      .tonearm { display: none; }
+      .vinyl-record { width: 200px; height: 200px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-glow"></div>
+
+  <header>
+    <nav>
+      <a href="#" class="brand-logo">ENHYPEN</a>
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link">Início</a></li>
+        <li><a href="#about" class="nav-link">Sobre</a></li>
+        <li><a href="#members" class="nav-link">Integrantes</a></li>
+        <li><a href="#discography" class="nav-link">Discografia</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero" id="hero">
+    <span class="badge">BELIFT LAB / HYBE</span>
+    <h1>CONNECT & TRANSCEND</h1>
+    <p>O universo definitivo do ENHYPEN. Explore o conceito Dark Fantasy, os membros e escute toda a discografia oficial em vinil.</p>
+    <a href="#discography" class="btn-primary">Tocar Discografia</a>
+  </section>
+
+  <main class="container">
+
+    <section id="about" style="margin-bottom: 6rem;">
+      <h2 class="section-title">Sobre o Grupo</h2>
+      <div class="about-grid">
+        <div class="about-card">
+          <h3>A Origem</h3>
+          <p>Formado através do programa de sobrevivência <strong>I-LAND</strong> em 2020, o ENHYPEN estreou sob a BELIFT LAB com a proposta de conectar um novo público global através da música e narrativas visuais profundas.</p>
+        </div>
+        <div class="about-card">
+          <h3>O Significado</h3>
+          <p>Assim como o sinal de hífen ("hyphen") conecta palavras para gerar novos significados, os 7 membros se conectam para crescer e transcender barreiras juntos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="members" style="margin-bottom: 6rem;">
+      <h2 class="section-title">Os 7 Integrantes</h2>
+      <div class="members-grid" id="members-grid">
+        </div>
+    </section>
+
+    <section id="discography">
+      <h2 class="section-title">Discografia Completa</h2>
+      <p style="color: var(--text-muted); margin-bottom: 2rem;">Clique em qualquer card de álbum para abrir o tocador de disco de vinil interativo.</p>
+      <div class="album-grid" id="album-grid">
+        </div>
+    </section>
+
+  </main>
+
+  <div class="player-modal" id="member-modal">
+    <div class="player-container" style="grid-template-columns: 1fr; max-width: 500px;">
+      <button class="close-modal" onclick="closeMemberModal()">&times;</button>
+      <div id="member-modal-content">
+        </div>
+    </div>
+  </div>
+
+  <div class="player-modal" id="vinyl-modal">
+    <div class="player-container">
+      <button class="close-modal" onclick="closeVinylPlayer()">&times;</button>
+      
+      <div class="vinyl-wrapper">
+        <div class="tonearm" id="tonearm"></div>
+        <div class="vinyl-record" id="vinylRecord">
+          <div class="vinyl-label" id="vinylLabel"></div>
+          <div class="vinyl-hole"></div>
+        </div>
+      </div>
+
+      <div class="player-details">
+        <span id="playerMeta" class="album-meta"></span>
+        <h2 id="playerTitle" style="font-family: 'Cinzel'; margin-bottom: 0.5rem;"></h2>
+        
+        <ul class="tracklist" id="tracklist">
+          </ul>
+
+        <div class="player-controls">
+          <button class="play-btn" id="playBtn" onclick="togglePlay()">PLAY</button>
+          <div style="flex-grow: 1;">
+            <p id="nowPlayingText" style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.4rem;">Selecione uma faixa</p>
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="progressBar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 ENHYPEN Fan Hub & Vinyl Experience.</p>
+  </footer>
+
+  <script>
+    // --- DADOS DOS INTEGRANTES ---
+    const members = [
+      { id: "jungwon", name: "Jungwon", role: "Líder & Vocalista", birth: "09/02/2004", mbti: "ISTJ", desc: "Líder dedicado e focado. Conhecido por seus vocais expressivos e excelente controle de dança.", img: "https://i.pinimg.com/736x/52/c1/34/52c1340be02729967a9d8bc76da24fc5.jpg" },
+      { id: "heeseung", name: "Heeseung", role: "Vocalista Principal", birth: "15/10/2001", mbti: "INTP", desc: "O centro vocal do grupo. Possui alcance técnico brilhante e participação em arranjos musicais.", img: "https://i.pinimg.com/736x/de/6a/64/de6a64e4e5c2fc273c5fa4346b4237eb.jpg" },
+      { id: "jay", name: "Jay", role: "Rapper & Vocalista", birth: "20/04/2002", mbti: "ENFP", desc: "Nascido nos EUA, traz energia rock/punk marcante e grande habilidade com guitarra.", img: "https://i.pinimg.com/736x/3e/98/5e/3e985e45381d9fadf6dc8cacf7e00a87.jpg" },
+      { id: "jake", name: "Jake", role: "Rapper & Vocalista", birth: "15/11/2002", mbti: "ISTP", desc: "Nascido na Austrália. Destaca-se por seu carisma, timbre suave e constante evolução artística.", img: "https://i.pinimg.com/736x/36/35/e2/3635e23bd5358a2fd9fba562d6c339df.jpg" },
+      { id: "sunghoon", name: "Sunghoon", role: "Vocalista & Visual", birth: "08/12/2002", mbti: "ISTJ", desc: "Ex-patinador artístico no gelo de nível nacional. Agrega elegância e presença de palco única.", img: "https://i.pinimg.com/736x/96/07/22/960722556a49b0b7541bf995c6fd1c89.jpg" },
+      { id: "sunoo", name: "Sunoo", role: "Vocalista", birth: "24/06/2003", mbti: "ENFP", desc: "Conhecido por suas expressões faciais magnéticas e capacidade de alternar conceitos com facilidade.", img: "https://i.pinimg.com/736x/46/1f/1d/461f1d78eaf310d5ecb9a10756f79321.jpg" },
+      { id: "niki", name: "Ni-ki", role: "Dançarino Principal & Maknae", birth: "09/12/2005", mbti: "ENTP", desc: "Origem japonesa. Aclamado como um dos dançarinos mais prodigiosos e precisos do K-Pop moderno.", img: "https://i.pinimg.com/736x/48/7d/6b/487d6bb7504c04078893061d8bf08419.jpg" }
+    ];
+
+    // --- TODOS OS 15 ÁLBUNS SOLICITADOS ---
+    const albums = [
+      { title: "BORDER : DAY ONE", year: "2020", type: "Debut Mini Album", cover: "https://i.pinimg.com/736x/f5/7a/39/f57a3908225246b5538d30dca43651b9.jpg", tracks: ["Given-Taken", "Let Me In (20 CUBE)", "10 Months", "Flicker"] },
+      { title: "BORDER : CARNIVAL", year: "2021", type: "2nd Mini Album", cover: "https://i.pinimg.com/control1/1200x/05/9d/7c/059d7c66b01dd55710ac0aac1c28a572.jpg", tracks: ["Drunk-Dazed", "FEVER", "Not For Sale", "Mixed Up"] },
+      { title: "BORDER : Hakanai", year: "2021", type: "Japanese Single", cover: "https://i.pinimg.com/1200x/c9/c5/67/c9c567e9954e0cbf5ec596a4f0dabd80.jpg", tracks: ["Given-Taken (Jap. Ver)", "Let Me In (Jap. Ver)", "Forget Me Not"] },
+      { title: "DIMENSION : DILEMMA", year: "2021", type: "1st Studio Album", cover: "https://i.pinimg.com/control1/1200x/68/e0/b0/68e0b0b0e58ed1732f88163232612a84.jpg", tracks: ["Tamed-Dashed", "Upper Side Dreamin'", "Just a Little Bit", "Go Big or Go Home"] },
+      { title: "DIMENSION : ANSWER", year: "2022", type: "Repackage Album", cover: "https://i.pinimg.com/736x/60/d2/c6/60d2c6c3fb132c913898368f89aed179.jpg", tracks: ["Blessed-Cursed", "Polaroid Love", "Outro : Day 2"] },
+      { title: "DIMENSION : Senkou", year: "2022", type: "Japanese Single", cover: "https://i.pinimg.com/1200x/54/b7/ec/54b7ec863d6126a0631566ebb870faa7.jpg", tracks: ["Tamed-Dashed (Jap. Ver)", "Drunk-Dazed (Jap. Ver)", "Always"] },
+      { title: "MANIFESTO : DAY 1", year: "2022", type: "3rd Mini Album", cover: "https://i.pinimg.com/1200x/c0/18/f3/c018f35e915301f7699cb1b6dad0f9a4.jpg", tracks: ["Future Perfect (Pass the Mic)", "TFW (That Feeling When)", "SHOUT OUT"] },
+      { title: "Sadame", year: "2022", type: "1st JP Studio Album", cover: "https://i.pinimg.com/1200x/32/d7/81/32d781872e16c4bb8352a98ea4ce011b.jpg", tracks: ["Future Perfect (Jap. Ver)", "Forget Me Not", "Make the change"] },
+      { title: "DARK BLOOD", year: "2023", type: "4th Mini Album", cover: "https://i.pinimg.com/control1/736x/3a/05/68/3a0568eb9dc2b6c3a0df0cb6669df194.jpg", tracks: ["Bite Me", "Sacrifice (Eat Me Up)", "Chaconne", "Bills", "Karma"] },
+      { title: "ORANGE BLOOD", year: "2023", type: "5th Mini Album", cover: "https://i.pinimg.com/736x/6a/78/57/6a7857fdeb54ed7e7d1838edea5deecf.jpg", tracks: ["Sweet Venom", "Still Monster", "Blind", "Orange Flower"] },
+      { title: "Dark Moon Special Album", year: "2024", type: "Special (MEMORABILIA)", cover: "https://i.pinimg.com/736x/82/46/e3/8246e33de23da923ab71e781b6b8d60b.jpg", tracks: ["Fatal Trouble", "One In A Billion", "Criminal Love", "Lucifer"] },
+      { title: "ROMANCE : UNTOLD", year: "2024", type: "2nd Studio Album", cover: "https://i.pinimg.com/736x/f5/dd/7a/f5dd7a438d42ecd169e9661800d0c845.jpg", tracks: ["XO (Only If You Say Yes)", "Moonstruck", "Your Eyes Only", "Brought The Heat Back"] },
+      { title: "ROMANCE : UNTOLD -daydream-", year: "2024", type: "Repackage Album", cover: "https://i.pinimg.com/736x/c6/d8/fb/c6d8fb2127a4be7adbebaf273830650e.jpg", tracks: ["No Doubt", "Daydream", "XO (Only If You Say Yes)"] },
+      { title: "DESIRE : UNLEASH", year: "2026", type: "6th Mini Album", cover: "https://i.pinimg.com/736x/37/ee/a2/37eea25005a0afe3c148b4cd5a2d7e6f.jpg", tracks: ["Unleash The Fire", "Voltage", "Neon Night"] },
+      { title: "THE SIN : VANISH", year: "2026", type: "3rd Studio Album", cover: "https://i.pinimg.com/736x/c9/e9/b6/c9e9b6547b35fc4fbc25b615ff50cd13.jpg", tracks: ["Vanish", "Forbidden", "Endless Abyss", "Red Light"] }
+    ];
+
+    // --- RENDERIZAR MEMBROS ---
+    function renderMembers() {
+      const container = document.getElementById('members-grid');
+      container.innerHTML = members.map(m => `
+        <div class="member-card" onclick="openMemberModal('${m.id}')">
+          <img src="${m.img}" class="member-img" alt="${m.name}">
+          <div class="member-info">
+            <h3>${m.name}</h3>
+            <span>${m.role}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openMemberModal(id) {
+      const m = members.find(item => item.id === id);
+      if(!m) return;
+      
+      const content = document.getElementById('member-modal-content');
+      content.innerHTML = `
+        <h2 style="color: var(--accent-crimson); font-size: 2rem;">${m.name}</h2>
+        <p style="color: var(--accent-gold); font-weight: bold; margin-bottom: 1rem;">${m.role}</p>
+        <p style="margin-bottom: 0.5rem;"><strong>Nascimento:</strong> ${m.birth}</p>
+        <p style="margin-bottom: 0.5rem;"><strong>MBTI:</strong> ${m.mbti}</p>
+        <p style="margin-top: 1rem; color: var(--text-muted);">${m.desc}</p>
+      `;
+      document.getElementById('member-modal').classList.add('active');
+    }
+
+    function closeMemberModal() {
+      document.getElementById('member-modal').classList.remove('active');
+    }
+
+    // --- RENDERIZAR ÁLBUNS ---
+    function renderAlbums() {
+      const container = document.getElementById('album-grid');
+      container.innerHTML = albums.map((a, index) => `
+        <div class="album-card" onclick="openVinylPlayer(${index})">
+          <img src="${a.cover}" class="album-cover" alt="${a.title}">
+          <span class="album-meta">${a.year} • ${a.type}</span>
+          <h3 class="album-title">${a.title}</h3>
+        </div>
+      `).join('');
+    }
+
+    // --- SISTEMA DO VINYL PLAYER ---
+    let isPlaying = false;
+    let progressTimer;
+
+    function openVinylPlayer(index) {
+      const album = albums[index];
+      document.getElementById('playerTitle').innerText = album.title;
+      document.getElementById('playerMeta').innerText = `${album.year} • ${album.type}`;
+      document.getElementById('vinylLabel').style.backgroundImage = `url(${album.cover})`;
+
+      const trackListEl = document.getElementById('tracklist');
+      trackListEl.innerHTML = album.tracks.map((track) => `
+        <li class="track-item" onclick="selectTrack('${track}', this)">
+          <span>${track}</span>
+          <span>3:20</span>
+        </li>
+      `).join('');
+
+      document.getElementById('vinyl-modal').classList.add('active');
+    }
+
+    function selectTrack(trackName, element) {
+      document.querySelectorAll('.track-item').forEach(el => el.classList.remove('active'));
+      element.classList.add('active');
+      document.getElementById('nowPlayingText').innerText = `Tocando: ${trackName}`;
+
+      isPlaying = false;
+      togglePlay();
+    }
+
+    function togglePlay() {
+      const tonearm = document.getElementById('tonearm');
+      const vinyl = document.getElementById('vinylRecord');
+      const playBtn = document.getElementById('playBtn');
+      const progressBar = document.getElementById('progressBar');
+
+      if (!isPlaying) {
+        isPlaying = true;
+        playBtn.innerText = "PAUSE";
+        tonearm.classList.add('playing');
+        
+        setTimeout(() => {
+          vinyl.classList.add('spinning');
+        }, 400);
+
+        let progress = 0;
+        clearInterval(progressTimer);
+        progressTimer = setInterval(() => {
+          progress += 0.5;
+          progressBar.style.width = progress + "%";
+          if (progress >= 100) clearInterval(progressTimer);
+        }, 500);
+
+      } else {
+        isPlaying = false;
+        playBtn.innerText = "PLAY";
+        tonearm.classList.remove('playing');
+        vinyl.classList.remove('spinning');
+        clearInterval(progressTimer);
+      }
+    }
+
+    function closeVinylPlayer() {
+      document.getElementById('vinyl-modal').classList.remove('active');
+      if(isPlaying) togglePlay();
+      document.getElementById('progressBar').style.width = "0%";
+    }
+
+    // INICIALIZAÇÃO
+    document.addEventListener('DOMContentLoaded', () => {
+      renderMembers();
+      renderAlbums();
+    });
+  </script>
+</body>
+</html>
